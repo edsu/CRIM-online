@@ -1,0 +1,16 @@
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#search-accordion" href="#contributor-section">
+            <span>Contributor</span><i class="icon-plus"></i>
+        </a>
+    </div>
+    <div id="contributor-section" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <ul class="column-checklist two-columns">
+            {% for contributor in contributors %}
+            <li><label class="checkbox" for="contributor{{ forloop.counter }}"><input type="checkbox" id="contributor{{ forloop.counter }}" name="r" value="{{ contributor }}" />{{ contributor }}</label></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

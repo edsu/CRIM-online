@@ -1,0 +1,21 @@
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#search-accordion" href="#composer-section">
+            <span>Composer</span><i class="icon-plus"></i>
+        </a>
+    </div>
+    <div id="composer-section" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <ul class="column-checklist four-columns">
+            {% for composer in composers %}
+            <li>
+                <label class="checkbox" for="composer{{ forloop.counter }}">
+                    <input type="checkbox" id="composer{{ forloop.counter }}" name="p" value="{{ composer }}" />{{ composer }}
+                </label>
+            </li>
+            {% endfor %}
+            </ul>
+            <br class="stop-columns" />
+        </div>
+    </div>
+</div>

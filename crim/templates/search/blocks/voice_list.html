@@ -1,0 +1,6 @@
+<li>
+    <label for="{{ voice_id }}">
+        <span {% if hidden %}class="hide-label"{% endif %}>{{ voice_name }}</span>
+    </label>
+    <input id="{{ voice_id }}" type="radio" name="{{ voice_group }}" value="{{ voice_name }}" {% if checked %}checked="checked"{% endif %}/>
+</li>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>CRIM | Search results</title>
+{% endblock %}
+
+{% block header %}
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" rel="stylesheet"></link>
+  <script src='{% static "js/search.js" %}'></script>
+  <script type="text/javascript">
+    $(document).ready(function ($) {
+    fetchPieceResults();
+    fetchRelationshipResults();
+    fetchFacets();
+    });
+  </script>
+{% endblock %}
+
+{% block wrap %}
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="results-heading row-fluid">
+        <h1 class="results-title page-title span5"><span class="searched-for">Results</span></h1>
+        <div class="row-fluid">
+          <div class="span8 results-container content-container">
+            <ul id="results-tab" class="nav nav-tabs">
+              <li class="active"><a href="#pieces" data-toggle="tab">Pieces<span id="pieces-count" class="results-count"></span></a></li>
+              <li class=""><a href="#relationships" data-toggle="tab">Relationships<span id="relationships-count" class="results-count"></span></a></li>
+            </ul>
+            <div class="tab-content" id="results-tab-content">
+              <div id="pieces" class="tab-pane fade active in"></div>
+              <div id="relationships" class="tab-pane fade"></div>
+            </div>
+          </div>
+          <div id="sidebar" class="span4">
+            <div id="facets"></div>
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+    </div><!--/span-->
+  </div><!--/row-->
+
+  <script type="text/JavaScript" src="/static/js/deps/Fabric-all.js"></script>
+{% endblock %}

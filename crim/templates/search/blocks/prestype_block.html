@@ -1,0 +1,314 @@
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#search-accordion" href="#presentationTypes-section">
+            <span>Presentation Types</span><i class="icon-plus"></i>
+        </a>
+    </div>
+    <div id="presentationTypes-section" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <div class="accordion" id="presentationTypes-accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#nonImitativeDuo-section"><span>Non Imitative Duo</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="nonImitativeDuo-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Upper Voices 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_nonim_up1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Lower Voices 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_nonim_lo1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Upper Voices 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_nonim_up2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Lower Voices 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_nonim_lo2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#freeImitation-section"><span>Free Imitation</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="freeImitation-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Dux</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_free_dux %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_free_comes %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="voice-options">
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_free_comes1" legend="Comes Voice Enters" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#imitativeDuet-section"><span>Imitative Duet</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="imitativeDuet-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Dux 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_imduet_dux1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_imduet_comes1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Dux 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_imduet_dux2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_imduet_comes2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="voice-options">
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_imduet_comes1" legend="Comes 1 or 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_imduet_dux2" legend="Dux 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_options.html" with opt_id="prestype_imduet_opts" legend="Other Options" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#periodicEntry-section"><span>Periodic Entry</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="periodicEntry-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Dux 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_dux1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_comes1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Dux 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_dux2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_comes2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="voice-options">
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_perentry_comes1" legend="Comes 1 or 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_perentry_dux2" legend="Dux 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_options.html" with opt_id="prestype_perentry_opts" legend="Other Options" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#periodicTonal-section"><span>Periodic Entry Tonal</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="periodicTonal-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Dux 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_t_dux1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_t_comes1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Dux 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_t_dux2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_t_comes2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="voice-options">
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_perentry_t_comes1" legend="Comes 1 or 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_perentry_t_dux2" legend="Dux 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_options.html" with opt_id="prestype_perentry_t_opts" legend="Other options" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#periodicStacked-section"><span>Periodic Entry Stacked</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="periodicStacked-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Dux 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_s_dux1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 1</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_s_comes1 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Dux 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_s_dux2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Comes 2</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in prestype_entry_s_comes2 %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="voice-options">
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_perentry_s_comes1" legend="Comes 1 or 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_filter.html" with filt_id="prestype_perentry_s_dux2" legend="Dux 2 Voice Enters" has_fourth="true" %}
+
+                                {% include "search/blocks/voice_options.html" with opt_id="prestype_perentry_s_opts" legend="Other options" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#presentationTypes-accordion" href="#presentationOther-section"><span>Other Options</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="presentationOther-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <label class="checkbox" id="search_checkbox" for="presentationOther1"><input type="checkbox" id="presentationOther1" name="presentationOther" value="HR Simple" />HR Simple</label>
+                            <label class="checkbox" id="search_checkbox" for="presentationOther2"><input type="checkbox" id="presentationOther2" name="presentationOther" value="HR Dactyll" />HR Dactyll</label>
+                            <label class="checkbox" id="search_checkbox" for="presentationOther3"><input type="checkbox" id="presentationOther3" name="presentationOther" value="HR Stagger" />HR Stagger</label>
+                            <label class="checkbox" id="search_checkbox" for="presentationOther4"><input type="checkbox" id="presentationOther4" name="presentationOther" value="HR Dance" />HR Dance</label>
+                            <label class="checkbox" id="search_checkbox" for="presentationOther5"><input type="checkbox" id="presentationOther5" name="presentationOther" value="HR Fauxbourdon" />HR Fauxbourdon</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

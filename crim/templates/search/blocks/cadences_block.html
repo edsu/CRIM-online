@@ -1,0 +1,94 @@
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#search-accordion" href="#cadences-section">
+            <span>Cadences</span><i class="icon-plus"></i>
+        </a>
+    </div>
+    <div id="cadences-section" class="accordion-body collapse">
+        <div class="accordion-inner">
+
+            <div class="accordion" id="cadences-accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#cadences-accordion" href="#finalTone-section"><span>Final Tone</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="finalTone-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <ul class="unstyled">
+                            {% for final_tone in cadence_final_tones %}
+                            <li><label class="checkbox" for="finaltone{{ forloop.counter }}"><input type="checkbox" id="finaltone{{ forloop.counter }}" name="f" value="{{ final_tone }}" />{{ final_tone }}</label></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#cadences-accordion" href="#cadenceType-section"><span>Cadence Type</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="cadenceType-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <ul class="unstyled">
+                            {% for cadence_kind in cadence_kinds %}
+                            <li>
+                                <label class="checkbox" for="cadencetype{{ forloop.counter }}">
+                                    <input type="checkbox" id="cadencetype{{ forloop.counter }}" name="k" value="{{ cadence_kind }}" />{{ cadence_kind }}
+                                </label>
+                            </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#cadences-accordion" href="#cadenceMods-section"><span>Cadence Modifiers</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="cadenceMods-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <ul class="unstyled">
+                            {% for alteration in cadence_alters %}
+                            <li>
+                                <label class="checkbox" for="cadencealter{{ forloop.counter }}">
+                                    <input type="checkbox" id="cadencealter{{ forloop.counter }}" name="m" value="{{ alteration }}" />{{ alteration }}
+                                </label>
+                            </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#cadences-accordion" href="#cadenceVoices-section"><span>Cadence Voices</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="cadenceVoices-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Cantizans</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in cad_voice_cantz %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Tenorizans</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in cad_voice_tenz %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

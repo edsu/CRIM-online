@@ -1,0 +1,112 @@
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#search-accordion" href="#intervalPats-section">
+            <span>Interval Patterns</span><i class="icon-plus"></i>
+        </a>
+    </div>
+    <div id="intervalPats-section" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <div class="accordion" id="intervals-accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#intervals-accordion" href="#pSixths-section"><span>Parallel 6ths</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="pSixths-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Upper Voices</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in intpatt_up6_voice %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Lower Voices</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in intpatt_lo6_voice %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#intervals-accordion" href="#pThirds-section"><span>Parallel 3rds</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="pThirds-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Upper Voices</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in intpatt_up3_voice %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Lower Voices</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in intpatt_lo3_voice %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#intervals-accordion" href="#alternating-section"><span>Alternating 5ths/3rds</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="alternating-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <div class="voice-grid-container form-inline">
+                                <dl class="voice-grid">
+                                    <dt>Upper Voices</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in intpatt_up53_voice %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                    <dt>Lower Voices</dt>
+                                    <dd>
+                                        <ul>
+                                            {% for v in intpatt_lo53_voice %}
+                                                {% include "search/blocks/voice_list.html" with voice_id=v.id voice_name=v.voice hidden=v.hidden checked=v.checked voice_group=v.group %}
+                                            {% endfor %}
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#intervals-accordion" href="#intervalsOther-section"><span>Other Options</span><i class="icon-plus"></i></a>
+                    </div>
+                    <div id="intervalsOther-section" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <label class="checkbox" id="search_checkbox" for="intervalsOther1"><input type="checkbox" id="intervalsOther1" name="intpatt_other" value="Romanesca" />Romanesca</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

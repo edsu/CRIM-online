@@ -1,0 +1,32 @@
+<fieldset class="voice-filter">
+    <legend>{{ legend }}</legend>
+    <div class="voice-entry-interval">
+        <label class="radio">
+            <input type="radio" id="{{ filt_id }}_un_oct" name="{{ filt_id }}_entry" value="un_oct" />
+            @1 or 8
+        </label>
+
+        <label class="radio">
+            <input type="radio" id="{{ filt_id }}_fifth" name="{{ filt_id}}_entry" value="fifth" />
+            @5
+        </label>
+
+        {% if has_fourth == "true" %}
+        <label class="radio">
+            <input type="radio" id="{{ filt_id }}_fourth" name="{{ filt_id}}_entry" value="fourth" />
+            @4
+        </label>
+        {% endif %}
+    </div>
+    <div class="voice-entry-position">
+        <label class="radio">
+            <input type="radio" id="{{ filt_id }}_above" name="{{ filt_id }}_position" value="above" />
+            Above
+        </label>
+
+        <label class="radio">
+            <input type="radio" id="{{ filt_id }}_below" name="{{ filt_id }}_position" value="below" />
+            Below
+        </label>
+    </div>
+</fieldset>

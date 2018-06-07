@@ -1,0 +1,20 @@
+<div class="accordion-group">
+    <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#search-accordion" href="#texttone-section">
+            <span>Text-Tone Relationships</span><i class="icon-plus"></i>
+        </a>
+    </div>
+    <div id="texttone-section" class="accordion-body collapse">
+        <div class="accordion-inner">
+            <ul class="unstyled">
+            {% for treatment in text_treatments %}
+                <li>
+                    <label class="checkbox" for="texttone{{ forloop.counter }}">
+                        <input type="checkbox" id="texttone{{ forloop.counter }}" name="t" value="{{ treatment }}" />{{ treatment }}
+                    </label>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

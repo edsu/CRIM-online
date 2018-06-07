@@ -1,0 +1,19 @@
+{% load bootstrap_pagination %}
+{% load apostrophe %}
+<ul class="item-list results-list unstyled">
+  {% for res in piece_results.object_list %}
+  <li class="result pieces-result">
+    <h3><a href="/piece/{{ res.piece_id }}">{{ res.title|apostrophe }}</a></h3>
+    <ul class="item-actions">
+      {% if is_logged_in %}
+        <li>{% include "main/favorites/favorites.html" with is_favorite=res.is_favorite piece_id=res.piece_id %}</li>
+      {% endif %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
+{% bootstrap_paginate piece_results range=10 url_param_name="wpage" %}
+<script type="text/javascript">
+  attachPagerActions();
+  attachFavouritesAction();
+</script>
