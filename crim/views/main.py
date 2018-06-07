@@ -52,9 +52,9 @@ def profile(request):
     data = {
         'user': request.user,
         'profile': profile,
-        #         'favourited_pieces': profile.favourited_piece.order_by('piece_id'),
-        #         'favourited_analyses': profile.favourited_analysis.order_by('piece_id'),
-        #         'favourited_reconstructions': profile.favourited_reconstruction.order_by('piece'),
+        #         'favorite_pieces': profile.favorite_piece.order_by('piece_id'),
+        #         'favorite_analyses': profile.favorite_analysis.order_by('piece_id'),
+        #         'favorite_reconstructions': profile.favorite_reconstruction.order_by('piece'),
         #         'my_analyses': analyses,
         #         'my_reconstructions': reconstructions,
         #         'my_comments': DCComment.objects.filter(author=request.user).order_by('-created'),

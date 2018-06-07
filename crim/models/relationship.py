@@ -1,4 +1,6 @@
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save, post_delete
 
 
 class CRIMRelationship(models.Model):
@@ -85,3 +87,62 @@ class CRIMRelationship(models.Model):
             self.rt_tnm = True
         # Finalize changes
         super().save()
+
+
+@receiver(post_save, sender=CRIMRelationship)
+def solr_index(sender, instance, created, **kwargs):
+    print('Indexing in solr')
+    import uuid
+    from django.conf import settings
+    import solr
+
+    solrconn = solr.SolrConnection(settings.SOLR_SERVER)
+    record = solrconn.query('type:crim_relationship id:{0}'.format(instance.id))
+    if record:
+        # the record already exists, so we'll remove it first.
+        solrconn.delete(record.results[0]['id'])
+
+    # use a more specific name
+    relationship = instance
+
+    d = {
+        'type': 'crim_piece',
+        'id': str(uuid.uuid4()),
+        'observer': relationship.observer.name,
+        'model': relationship.model_observation.piece.title,
+        'derivative': relationship.derivative_observation.piece.title,
+        'rt_q': relationship.rt_q,
+        'rt_q_exact': relationship.rt_q_exact,
+        'rt_q_monnayage': relationship.rt_q_monnayage,
+        'rt_tm': relationship.rt_tm,
+        'rt_tm_snd': relationship.rt_tm_snd,
+        'rt_tm_minv': relationship.rt_tm_minv,
+        'rt_tm_retrograde': relationship.rt_tm_retrograde,
+        'rt_tm_ms': relationship.rt_tm_ms,
+        'rt_tm_transposed': relationship.rt_tm_transposed,
+        'rt_tm_invertible': relationship.rt_tm_invertible,
+        'rt_tnm': relationship.rt_tnm,
+        'rt_tnm_embellished': relationship.rt_tnm_embellished,
+        'rt_tnm_reduced': relationship.rt_tnm_reduced,
+        'rt_tnm_amplified': relationship.rt_tnm_amplified,
+        'rt_tnm_truncated': relationship.rt_tnm_truncated,
+        'rt_tnm_ncs': relationship.rt_tnm_ncs,
+        'rt_tnm_ocs': relationship.rt_tnm_ocs,
+        'rt_tnm_ocst': relationship.rt_tnm_ocst,
+        'rt_tnm_nc': relationship.rt_tnm_nc,
+        'rt_nm': relationship.rt_nm,
+        'rt_om': relationship.rt_om,
+    }
+    solrconn.add(**d)
+    solrconn.commit()
+
+
+@receiver(post_delete, sender=CRIMRelationship)
+def solr_delete(sender, instance, **kwargs):
+    from django.conf import settings
+    import solr
+    solrconn = solr.SolrConnection(settings.SOLR_SERVER)
+    record = solrconn.query('type:crim_relationship id:{0}'.format(instance.id))
+    if record:
+        # the record already exists, so we'll remove it first.
+        solrconn.delete(record.results[0]['id'])

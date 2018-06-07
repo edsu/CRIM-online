@@ -1,9 +1,9 @@
-var fetchWorkResults = function() {
-    fetchInitialResults('work', 1, '#works');
+var fetchPieceResults = function() {
+    fetchInitialResults('piece', 1, '#pieces');
 };
 
-var fetchElementResults = function() {
-    fetchInitialResults('element', 1, '#elements');
+var fetchRelationshipResults = function() {
+    fetchInitialResults('relationship', 1, '#relationships');
 };
 
 var fetchFacets = function() {
@@ -51,13 +51,13 @@ var attachFacetActions = function() {
 
 var fetchInitialResults = function(searchtype, page, target) {
     var qstr = window.location.search.replace("?", "");
-    if (searchtype == 'work') {
+    if (searchtype == 'piece') {
         if (window.location.search.match(/wpage/g) === null) {
             qstr = qstr + "&wpage=" + page;
         }
     }
 
-    if (searchtype == 'element') {
+    if (searchtype == 'relationship') {
         if (window.location.search.match(/epage/g) === null) {
             qstr = qstr + "&epage=" + page;
         }
@@ -77,14 +77,14 @@ var searchPageCallback = function(href) {
     var searchtype;
     var target;
     if (href.match('epage')) {
-        searchtype = "element";
-        target = "#elements";
+        searchtype = "relationship";
+        target = "#relationships";
     } else if (href.match('wpage')) {
-        searchtype = "work";
-        target = "#works";
-    } else {
-        searchtype = "work";
-        target = "#works";
+        searchtype = "piece";
+        target = "#pieces";
+    } else {  // default
+        searchtype = "piece";
+        target = "#pieces";
     }
 
     href = href.replace("?", "");
@@ -108,4 +108,3 @@ var attachPagerActions = function() {
         }
     });
 };
-

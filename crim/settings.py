@@ -130,3 +130,15 @@ SITE_ID = 2
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'crim/static')
+
+SOLR_NUM_SEARCH_RESULTS = 10
+
+SOLR_FACET_FIELDS = [
+    'people',
+    # TODO
+]
+
+DISPLAY_FACETS = {
+    'people': ('people', 'People'),
+    # TODO
+}

@@ -1,4 +1,6 @@
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save, post_delete
 from django.core.exceptions import ValidationError
 
 from crim.models.genre import CRIMGenre
@@ -136,3 +138,50 @@ class CRIMMassMovement(CRIMPiece):
         verbose_name = 'Piece: Mass movement'
         verbose_name_plural = 'Pieces: Mass movements'
         proxy = True
+
+
+@receiver(post_save, sender=CRIMPiece)
+def solr_index(sender, instance, created, **kwargs):
+    print('Indexing in solr')
+    import uuid
+    from django.conf import settings
+    import solr
+
+    solrconn = solr.SolrConnection(settings.SOLR_SERVER)
+    record = solrconn.query('type:crim_piece piece_id:{0}'.format(instance.id))
+    if record:
+        # the record already exists, so we'll remove it first.
+        solrconn.delete(record.results[0]['id'])
+
+    # use a more specific name
+    piece = instance
+
+    # Add all people with roles associated with this piece.
+    people = []
+    for role in piece.roles:
+        if role.person.name not in people:
+            people.append(role.person.name)
+
+    d = {
+        'type': 'crim_piece',
+        'id': str(uuid.uuid4()),
+        'piece_id': piece.piece_id,
+        'title': piece.title,
+        'mass': piece.mass.title if piece.mass else None,
+        'people': people,
+        'genre': piece.genre.name,
+        'date': piece.date_sort,
+    }
+    solrconn.add(**d)
+    solrconn.commit()
+
+
+@receiver(post_delete, sender=CRIMPiece)
+def solr_delete(sender, instance, **kwargs):
+    from django.conf import settings
+    import solr
+    solrconn = solr.SolrConnection(settings.SOLR_SERVER)
+    record = solrconn.query('type:crim_piece piece_id:{0}'.format(instance.id))
+    if record:
+        # the record already exists, so we'll remove it first.
+        solrconn.delete(record.results[0]['id'])

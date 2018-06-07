@@ -57,4 +57,7 @@ class CRIMVoice(models.Model):
         super().save()
 
     def __str__(self):
-        return '[{0}] {1} ({2})'.format(self.voice_id, self.piece.title, self.regularized_name)
+        if self.regularized_name:
+            return '[{0}] {1} ({2})'.format(self.voice_id, self.piece.title, self.regularized_name)
+        else:
+            return '[{0}] {1}'.format(self.voice_id, self.piece.title)
